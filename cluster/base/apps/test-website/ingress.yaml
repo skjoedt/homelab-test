@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`test.fanen.home`)
+    - match: Host(`test.fanen.dk`)
       kind: Rule
       services:
         - name: test-website
