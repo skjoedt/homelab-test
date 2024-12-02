@@ -1,5 +1,1 @@
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: kube-vip
-  namespace: kube-system
+YXBpVmVyc2lvbjogYXBwcy92MQpraW5kOiBEYWVtb25TZXQKbWV0YWRhdGE6CiAgbmFtZToga3ViZS12aXAKICBuYW1lc3BhY2U6IGt1YmUtc3lzdGVt
