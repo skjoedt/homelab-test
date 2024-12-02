@@ -55,7 +55,7 @@ mkdir -p ~/.kube
 # Install first master node
 k3sup install \
   --ip 192.168.68.21 \
-  --user ubuntu \
+  --user skjoedt \
   --k3s-extra-args "--disable traefik --disable servicelb --node-ip 192.168.68.21 --advertise-address 192.168.68.21 --tls-san 192.168.68.20" \
   --k3s-version v1.27.7+k3s2 \
   --context homelab \
@@ -65,7 +65,7 @@ k3sup install \
 # Join second master node
 k3sup join \
   --ip 192.168.68.22 \
-  --user ubuntu \
+  --user skjoedt \
   --server-ip 192.168.68.21 \
   --server-user ubuntu \
   --k3s-extra-args "--disable traefik --disable servicelb --node-ip 192.168.68.22 --advertise-address 192.168.68.22" \
@@ -75,7 +75,7 @@ k3sup join \
 # Join third master node
 k3sup join \
   --ip 192.168.68.23 \
-  --user ubuntu \
+  --user skjoedt \
   --server-ip 192.168.68.21 \
   --server-user ubuntu \
   --k3s-extra-args "--disable traefik --disable servicelb --node-ip 192.168.68.23 --advertise-address 192.168.68.23" \
@@ -86,10 +86,6 @@ k3sup join \
 ### 3. Set Up Local Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/homelab-test.git
-cd homelab-test
-
 # Deploy kube-vip
 kubectl apply -f cluster/base/kube-vip/
 
