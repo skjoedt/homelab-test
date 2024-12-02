@@ -1,0 +1,19 @@
+repositories:
+  - name: traefik
+    url: https://helm.traefik.io/traefik
+  - name: kubernetes-dashboard
+    url: https://kubernetes.github.io/dashboard/
+
+releases:
+  - name: traefik
+    namespace: traefik
+    createNamespace: true
+    chart: traefik/traefik
+    version: 24.0.0
+    values:
+      - ./cluster/base/traefik/values.yaml
+
+  - name: test-website
+    namespace: test-apps
+    createNamespace: true
+    chart: ./cluster/base/apps/test-website/chart
