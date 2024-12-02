@@ -1,30 +1,58 @@
-# Homelab Test Infrastructure
+# Homelab Kubernetes Infrastructure
 
-This repository contains the Infrastructure as Code (IaC) for a k3s cluster deployment with the following components:
+This repository contains Infrastructure as Code (IaC) for deploying and managing a high-availability k3s cluster. The project uses modern IaC practices with helmfile and kustomize to maintain a clean, maintainable codebase.
 
-- kube-vip for control plane high availability
-- Traefik as the ingress controller
-- Test website deployment
+## Project Overview
 
-## Prerequisites
+This infrastructure stack provides:
 
+### High Availability Control Plane
 - k3s cluster with 3 nodes
-- helmfile
-- kubectl
-- kustomize
+- kube-vip for control plane high availability
+- Automatic failover for the Kubernetes API endpoint
 
-## Network Configuration
+### Load Balancing & Ingress
+- Traefik as the ingress controller
+- External load balancing for services
+- HTTP and HTTPS support
+- Traefik dashboard for monitoring and management
 
-- Node IPs: 192.168.68.21-23
+### Sample Application
+- Example website deployment
+- High availability configuration with multiple replicas
+- Automatic load balancing
+- DNS integration example
+
+## Architecture
+
+### Network Configuration
 - Control Plane VIP: 192.168.68.20
+- Node IPs: 192.168.68.21-23
 - LoadBalancer IP: 10.0.10.2
+
+### Component Structure
+```
+.
+├── cluster/
+│   ├── base/                    # Base cluster configurations
+│   │   ├── kube-vip/           # HA control plane
+│   │   ├── traefik/            # Ingress controller
+│   │   └── apps/               # Application deployments
+│   └── environments/           # Environment-specific configs
+└── helmfile/                   # Helm release definitions
+```
 
 ## Getting Started
 
-1. Clone this repository
-2. Install prerequisites
-3. Apply the configurations using helmfile
+Please see [INSTALL.md](INSTALL.md) for detailed installation and setup instructions.
 
-```bash
-helmfile sync
-```
+## Contributing
+
+1. Fork the repository
+2. Create a new feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT License - See LICENSE file for details
